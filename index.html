@@ -77,10 +77,19 @@ const requestNotificationPermission = async () => {
     }
 }
 
+const showLocalNotification = (title, body, swRegistration) => {
+	const options = {
+	body,
+	// here you can add more properties like icon, image, vibrate, etc.
+	};
+	swRegistration.showNotification(title, options);
+}
+
 const main = async () => { //notice I changed main to async function so that I can use await for registerServiceWorker
     check();
     const swRegistration = await registerServiceWorker();
     const permission =  await requestNotificationPermission();
+    showLocalNotification('This is title', 'this is the message', swRegistration);
 }
 
 main()
