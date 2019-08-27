@@ -1,1 +1,89 @@
-<h1>Helo World</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/solid.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/fontawesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav class="bg-dark top-navbar container">
+		<div class="dropdown float-right">
+			<button class="btn btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-ellipsis-v mr-0"></i>
+			</button>
+			<div class="dropdown-menu dropdown-menu-right">
+				<a class="dropdown-item" href="#">About group</a>
+				<a class="dropdown-item" href="#">Search</a>
+				<a class="dropdown-item" href="#">Subscribe!</a>
+				<a class="dropdown-item" href="#">Who's Subscribe</a>
+				<a class="dropdown-item" href="#">Report</a>
+			</div>
+		</div>
+		<h6>Kumpulan meja hijau</h6>
+	</nav>
+	<nav class="fixed-bottom bg-dark user-navbar container">
+		<div class="dropup float-right">
+			<button type="button" class="btn btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-bars"></i> Menu
+			</button>
+			<div class="dropdown-menu  dropdown-menu-right">
+				<span class="dropdown-header">Website</span>
+				<a class="dropdown-item" href="#">About this group</a>
+				<a class="dropdown-item" href="#">Explore other groups</a>
+				<a class="dropdown-item" href="#">Webdy.net</a>
+				<div class="dropdown-divider"></div>
+				<span class="dropdown-header">Account</span>
+				<a class="dropdown-item" href="#">Change Username/Password</a>
+				<a class="dropdown-item" href="#">Login with other account</a>
+			</div>
+		</div>
+		<span class="btn">Logged in as <span class="text-primary">user4758</span></span>
+	</nav>
+	<div class="container">
+		ss
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+  
+const check = () => {
+  if (!('serviceWorker' in navigator)) {
+    throw new Error('No Service Worker support!')
+  }
+  if (!('PushManager' in window)) {
+    throw new Error('No Push API Support!')
+  }
+
+}
+
+const registerServiceWorker = async () => {
+    const swRegistration = await navigator.serviceWorker.register('js/service.js'); //notice the file name
+    return swRegistration;
+}
+
+const requestNotificationPermission = async () => {
+    const permission = await window.Notification.requestPermission();
+    // value of permission can be 'granted', 'default', 'denied'
+    // granted: user has accepted the request
+    // default: user has dismissed the notification permission popup by clicking on x
+    // denied: user has denied the request.
+    if(permission !== 'granted'){
+        throw new Error('Permission not granted for Notification');
+    }
+}
+
+const main = async () => { //notice I changed main to async function so that I can use await for registerServiceWorker
+    check();
+    const swRegistration = await registerServiceWorker();
+    const permission =  await requestNotificationPermission();
+}
+
+main()
+  </script>
+</body>
+</html>
