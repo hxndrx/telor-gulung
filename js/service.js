@@ -10,7 +10,7 @@ const urlB64ToUint8Array = base64String => {
   }
   return outputArray
 }
-self.addEventListener('activate', async () => {
+// self.addEventListener('activate', async () => {
   // This will be called only once when the service worker is activated.
   try {
     const applicationServerKey = urlB64ToUint8Array(
@@ -22,4 +22,4 @@ self.addEventListener('activate', async () => {
   } catch (err) {
     console.log('Error', err)
   }
-})
+// })
