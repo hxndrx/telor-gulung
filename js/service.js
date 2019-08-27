@@ -1,4 +1,6 @@
 console.log('halo')
+const subscription = await self.registration.pushManager.getSubscription()
+console.log(subscription)
 self.addEventListener('activate', async () => {
   console.log('activate')
   // This will be called only once when the service worker is activated.
