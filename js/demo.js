@@ -36,7 +36,7 @@ const check = () => {
 };
 
 const registerServiceWorker = async () => {
-  const swRegistration = await navigator.serviceWorker.register("service.js");
+  const swRegistration = await navigator.serviceWorker.register("js/sw.js");
   return swRegistration;
 };
 
@@ -60,7 +60,6 @@ const setUpPushPermission = async () => {
       if (!subscription) {
         return;
       }
-      console.log(subscription);
     })
     .catch((err) => {
       console.log('setUpPushPermission() ', err);
@@ -73,7 +72,6 @@ const subscribePush = async () => {
       const ask = base64UrlToUint8Array(
         "BKmYQW_V8jpiQ0buqGIHurfxGX9gZWqrJhJRClBCj_jQXrc0c-LjIJs3v_c3S5Xm5xkfWYh8YoUzHj6wguF4Brs"
       );
-      console.log(ask)
       const options = { applicationServerKey: ask, userVisibleOnly: true };
       return serviceWorkerRegistration.pushManager.subscribe(options);
     })
