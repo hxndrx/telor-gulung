@@ -36,7 +36,7 @@ const check = () => {
 };
 
 const registerServiceWorker = async () => {
-  const swRegistration = await navigator.serviceWorker.register("sw.js");
+  const swRegistration = await navigator.serviceWorker.register("js/sw.js");
   return swRegistration;
 };
 
